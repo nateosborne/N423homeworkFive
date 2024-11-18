@@ -20,7 +20,7 @@ export async function showAllAlbums(genres) {
     const querySnapshot = await getDocs(collection(db, "albums"));
     let albumstring = "";
     querySnapshot.forEach((doc) => {
-      console.log("genre " + genres);
+      // console.log("genre " + genres);
       if (doc.data().genre == genres) {
         albumstring += `<div class="album">`;
         albumstring += `<h3>${doc.data().title}</h3>`;
@@ -31,7 +31,7 @@ export async function showAllAlbums(genres) {
         albumstring += `<p>${doc.data().genre}</p>`;
         albumstring += `</div>`;
         //   console.log(`${doc.id} => ${doc.data()}`);
-      } else {
+      } else if (genres == undefined) {
         albumstring += `<div class="album">`;
         albumstring += `<h3>${doc.data().title}</h3>`;
         albumstring += `<div class="albumImg"><img src="${
